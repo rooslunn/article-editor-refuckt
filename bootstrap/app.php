@@ -3,11 +3,18 @@
 use Dreamscape\Foundation\Kernel;
 use Monolog\Logger;
 use Monolog\Handler\StreamHandler;
+use Illuminate\Database\Capsule\Manager as Capsule;
 
 
 $app = new Dreamscape\Foundation\Application(
     realpath(__DIR__.'/../')
 );
+
+/*
+ * DotEnv
+ */
+$dotenv = Dotenv\Dotenv::create(base_path());
+$dotenv->load();
 
 /*
  * Monolog
@@ -21,7 +28,6 @@ $app->instance('log', $log);
  * Routes
  */
 $routes = require base_path('routes') . DIRECTORY_SEPARATOR . 'web.php';
-$log->debug($routes);
 
 /*
  * Kernel
@@ -38,6 +44,23 @@ if (env('APP_ENV') === 'production') {
     $twig_options['cache'] = config('view.compiled');
 }
 $app->instance('view', new Twig_Environment($loader, $twig_options));
+
+/*
+ * Database
+ */
+
+$capsule = new Capsule;
+$capsule->addConnection([
+    'driver'    => env('DB_CONNECTION'),
+    'host'      => env('DB_HOST'),
+    'database'  => env('DB_DATABASE'),
+    'username'  => env('DB_USERNAME'),
+    'password'  => env('DB_PASSWORD'),
+//    'charset'   => 'utf8',
+//    'collation' => 'utf8_unicode_ci',
+//    'prefix'    => '',
+]);
+$capsule->setAsGlobal();
 
 /*
  * Ready for Romance!

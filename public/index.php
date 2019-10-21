@@ -12,5 +12,4 @@ require_once __DIR__.'/../bootstrap/app.php';
 
 $response = app('kernel')->handle($request = Request::createFromGlobals());
 $response->send();
-
-$kernel->terminate($request, $response);
+app('kernel')->terminate($request, $response);

@@ -1,6 +1,8 @@
 <?php
 
 use Dreamscape\Container\Container;
+use Illuminate\Support\Arr;
+use Illuminate\Support\Str;
 
 if (! function_exists('app')) {
     /**
