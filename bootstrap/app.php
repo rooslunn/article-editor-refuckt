@@ -5,6 +5,9 @@ use Monolog\Logger;
 use Monolog\Handler\StreamHandler;
 use Illuminate\Database\Capsule\Manager as Capsule;
 
+/*
+ * todo: Make use of Illuminate/Support/Container
+ */
 
 $app = new Dreamscape\Foundation\Application(
     realpath(__DIR__.'/../')

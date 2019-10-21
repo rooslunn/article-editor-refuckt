@@ -6,16 +6,14 @@ namespace Dreamscape\Domain\ArticleEditor\Controllers;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Illuminate\Database\Capsule\Manager as Capsule;
 
-class HomeController
+class TestController
 {
     public function __invoke(Request $request)
     {
         $app_name = $request->get('name', 'Default');
-        $articles = Capsule::table('generic_status')->get();
         return new Response(
-            view('home', compact('app_name', 'articles'))
+            view('home', compact('app_name'))
         );
     }
 }
