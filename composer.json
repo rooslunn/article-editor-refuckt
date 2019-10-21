@@ -1,0 +1,41 @@
+{
+    "name": "dreamscape/article-editor-refuckt",
+    "description": "Article Editor Refuckt",
+    "type": "project",
+    "license": "proprietary",
+    "authors": [
+        {
+            "name": "Ruslan Kladko",
+            "email": "ruslan.kladko@dreamscapenetworks.com",
+            "homepage": "http://www.dreamscapenetworks.com",
+            "role": "Challenge Accepted!"
+        }
+    ],
+    "require": {
+        "monolog/monolog": "^1.25",
+        "symfony/http-kernel": "^3.4",
+        "symfony/routing": "^3.4",
+        "twig/twig": "^1.42",
+        "vlucas/phpdotenv": "^3.6"
+    },
+    "require-dev": {
+        "codeception/codeception": "^3.1"
+    },
+    "autoload": {
+        "files": ["src/helpers.php"],
+        "psr-4": {
+            "Dreamscape\\": "src/"
+        }
+      },
+    "autoload-dev": {
+      "files": ["src/helpers.php"],
+      "psr-4": {
+            "Tests\\": "tests/"
+        }
+    },
+    "config": {
+        "preferred-install": "dist",
+        "sort-packages": true,
+        "optimize-autoloader": true
+    }
+}

@@ -1,0 +1,15 @@
+<?php 
+
+class AdamCest
+{
+    public function _before(AcceptanceTester $I)
+    {
+    }
+
+    // tests
+    public function tryToTest(AcceptanceTester $I)
+    {
+        $I->amOnPage('/');
+        $I->see('Doc Editor', 'h1');
+    }
+}
